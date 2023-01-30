@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample1</title>
+    <script>
+      let num = 0;
+      // document.write() => 입력받은 문자열을 그대로 브라우저의 viewport에 출력
+      // 현재는 사용 권장 X
+      document.write(`head 태그 내 실행 순서: ${num++}<br>`);
+      console.log(`1. num: ${num}`); // System.out.println
+    </script>
+    <script>
+      document.write(`head 태그 내 실행 순서: ${num++}<br>`);
+      console.log(`2. num: ${num}`); // System.out.println
+    </script>
+  </head>
+  <body>
+    <script>
+      document.write(`body 태그 내 실행 순서: ${num++}<br>`);
+      console.log(`3. num: ${num}`); // System.out.println
+    </script>
+    <script>
+      document.write(`body 태그 내 실행 순서: ${num++}<br>`);
+      console.log(`4. num: ${num}`); // System.out.println
+    </script>
+    <p>
+      <button type="button" onclick="alert('자바스크립트 파일')">버튼 클릭</button>
+    </p>
+    <script>
+      let age = 23;
+      document.write("<div style='color: red; font-size: 24px;'>JS파일</div>");
+      document.write(`나이는 ${age}입니다.`);
+    </script>
+  </body>
+</html>
