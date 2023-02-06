@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 객체 배열
+      var cars = [
+        { name: "Sonata", color: "red", speed: 100 },
+        { name: "Jeep", color: "green", speed: 70 },
+        { name: "passt", color: "blue", speed: 150 },
+      ];
+
+      console.log(cars[0].color);
+      console.log(cars[0]);
+      console.log(delete cars[0].name);
+      console.log(cars[0]);
+
+      // ----------------------------------------
+
+      var car = new Array(
+        ["Sonata", "blue", 100],
+        ["Jeep", "red", 70],
+        ["Passt", "white", 150]
+      );
+
+      console.log("car.at(0).at(1): " + car.at(0).at(1));
+    </script>
+  </body>
+</html>

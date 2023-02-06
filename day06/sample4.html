@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="d1"></p>
+  <p id="d2"></p>
+  <p id="d3"></p>
+  <p id="d4"></p>
+  <script>
+    // 현재 날짜 & 시간
+    document.querySelector('#d1').innerHTML = new Date();
+    
+    // 1970.01.01 이후의 밀리초 계산
+    document.querySelector('#d2').innerHTML = new Date(1491803527400);
+
+    // 문자열 날짜
+    document.querySelector('#d3').innerHTML = new Date('October 15, 2018 06:18:07');
+
+    // 날짜 지정(month는 0부터 시작)
+    document.querySelector('#d4').innerHTML = new Date(2018, 11, 25, 18, 30, 29);
+
+    // Local이 아니면 북미 기준으로 출력된다.
+    const now = new Date();
+    
+    console.log(now.constructor.prototype);
+
+    // toLocaleString: 현재 지역 형식으로 날짜 & 시간 출력
+    console.log(now.toLocaleString());
+    // toLocaleDateString: 현재 지역 형식으로 날짜 출력
+    console.log(now.toLocaleDateString());
+    // toLocaleTimeString: 현재 지역 형식으로 시간 출력
+    console.log(now.toLocaleTimeString());
+
+    // getDate: 일
+    console.log(now.getDate());
+    // getDay: 요일(일요일: 0)
+    console.log(now.getDay());
+    // getMonth: 월(1월: 0)
+    console.log(now.getMonth());
+  </script>
+</body>
+</html>

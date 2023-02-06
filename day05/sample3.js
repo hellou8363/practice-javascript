@@ -38,3 +38,6 @@ allArr.forEach(value => value.forEach(value => console.log(value)));
 allArr.forEach(value => console.log(value));
 
 allArr.filter((value, index) => index % 2 != 0).forEach(value => console.log(value.join(' ')));
+
+allArr.filter((value, index) => index % 2 != 0)
+.map(value => console.log(value.join(' ')));

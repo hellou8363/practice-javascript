@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 생성자 함수 정의
+      function Car(name, color, speed) {
+        this.name = name;
+        this.color = color;
+        this.speed = speed;
+        this.speedUp = function () {
+          return this.speed > 0 ? this.speed += 10 : this.speed = 10;
+        };
+        this.speedDown = function () {
+          return this.speed > 0 ? this.speed -= 10 : this.speed = 0;
+        };
+      }
+    </script>
+  </body>
+</html>
