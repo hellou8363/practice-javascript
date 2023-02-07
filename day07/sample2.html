@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>jQuery 연동 방식</h2>
+    <ul>
+      <li><a href="https://jquery.com/">다운로드</a></li>
+      <li><a href="https://cdnjs.com/">CDN</a></li>
+    </ul>
+    
+    <!-- 다운로드 방식 -->
+    <!-- 직접 파일을 다운로드 받아서 src 속성으로 연결 -->
+    <!-- CDN 방식 연동 -->
+    <!-- integrity 속성의 해시코드 값과 src 속성의 해시코드 값을 비교하여 XSS 방지 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      // jQuery Startup Code #1 - 옛날 방식
+      $(document) // DOM tree 전체선택
+        .ready(function name(params) {
+          // ready: 모든 태그의 DOM tree가 완성되면 수행
+          console.log("jq 1 started..."); // function: callback
+          // 여기서 jQuery 코드 개발
+        }); // onready
+
+      // jQuery Startup Code #2 - 옛날 방식
+      $(window) // window: 브라우저
+        .load(function name(params) {
+          // 모든 자원 다운로드 후 수행 되므로 맨 나중에 수행됨
+          // load: 리소스 파일(예: 이미지)까지 모두 다운로드 된 후 수행
+          console.log("jq 2 started...");
+          // 여기서 jQuery 코드 개발
+        }); // onload
+
+      // jQuery Startup Code #3 - 가장 많이 사용
+      $(function () {
+        console.log("jq 3 started...");
+        console.log("\t1. this: ", this);
+      }); // .jq
+
+      // Callback function => Arrow Function
+      // jQuery Startup Code #4 - 요즘 추세
+      $(() => {
+        console.log("jq 4 started...");
+        console.log("\t2. this: ", this);
+      });
+    </script>
+  </body>
+</html>

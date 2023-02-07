@@ -106,4 +106,38 @@ Date 생성자의 작성 형식
  var d = new Date(dateString);
  var d = new Date(year, month, day, hours, seconds, milliseconds);
  ```
- 
+\
+\
+**문서 객체 모델(DOM)**
+- 웹 문서를 메모리로 읽어 들여 트리 구조로 변환
+- 문서의 각종 요소는 요소 노드로, 텍스트는 텍스트 노드로 변환
+- 변환된 트리 구조를 이용하면 자바스크립트로 웹 문서를 조작할 수 있음
+
+\
+\
+**문서 객체 생성**
+- ```createElement()```: 요소 노드를 생성
+- ```createTextNode()```: 텍스트 노드를 생성
+- ```appendChilde()```: 요소 노드를 body 객체에 추가
+
+\
+\
+**문서 객체 속성값 설정**
+- 객체 변수 사용: 객체변수.속성 = '값';
+- 속성 메소드 사용: setAttribute(속성, 값); => 현업에서 사용
+
+\
+\
+**문서 객체 스타일 변경**  
+```
+document.getElementById(id).style.속성명 = '속성값';
+```
+\
+\
+특정 태그 또는 여러 태그들에 이벤트 핸들러를 설정하려면  
+아래와 같은 4가지의 개념을 알고 있어야 한다.  
+
+1. Event Target: 어떤 이벤트가 발생하는 태그(들)  
+2. Event Type: 발생할 이벤트의 유형(onclick -> 마우스 클릭 이벤트)  
+(3) Event Listener: 이벤트가 발생하길 기다리는 자(예: onClick 속성)  
+(4) Event Handler: 이벤트가 발생했을 때, 이벤트를 처리하는 자  

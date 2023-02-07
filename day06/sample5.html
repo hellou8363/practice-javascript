@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>setTimeout / setInterval</title>
+</head>
+<body>
+  <div id="digClock"></div>
+  <script>
+    function digClock(name) {
+      console.group('digClock');
+      console.log(`1.name: ${name}`);
+
+      const today = new Date();
+      const day = `${today.getMonth() + 1}월 ${today.getDate()}일`;
+      const time = `${today.getHours()}시 ${today.getMinutes()}분 ${today.getSeconds()}초`;
+
+      console.log(`2. day: ${day}, time: ${time}`);
+
+      document.querySelector('#digClock').innerHTML = day + time;
+
+      // function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number
+      // setTimeout(digClock, 1000, 'Clock'); // 1회성
+
+      console.groupEnd();
+    }
+
+    // function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number
+    setInterval(digClock, 1000, 'Clock'); // 매 주기마다 반복 수행
+
+    // digClock('Clock');
+  </script>
+</body>
+</html>

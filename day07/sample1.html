@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="msg">문서 객체 스타일 변경</p>
+  <input type="button" onclick="textstyle()" value="텍스트 스타일 변경">
+  <input type="button" onclick="texthidden()" value="텍스트 숨기기">
+  <input type="button" onclick="textvisible()" value="텍스트 보이기">
+  <script>
+    function textstyle() {
+      document.querySelector('#msg').style.color = 'blue';
+      document.querySelector('#msg').style.fontSize = '30px';
+      document.querySelector('#msg').style.fontStyle = 'italic';
+    } // textstyle
+
+    function texthidden() {
+      document.querySelector('#msg').style.visibility = 'hidden';
+      // document.querySelector('#msg').style.display = 'none'; // 요소 노드 영역까지 제거
+    } // texthidden
+
+    function textvisible() {
+      document.querySelector('#msg').style.visibility = 'visible';
+    } // textvisible
+  </script>
+</body>
+</html>
