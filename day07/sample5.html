@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      // 요소 선택자 - 지정한 요소명과 일치하는 요소들에 스타일 적용
+      $(() => {
+        $("h2").css({
+          backgroundColor: "aqua",
+          border: "2px dashed #f00",
+        });
+      });
+
+      // 그룹 선택자 - 여러 요소에 공통 스타일 적용
+      $(() => {
+        $("h1, #tit3").css({
+          backgroundColor: "pink",
+          border: "2px double #f00",
+        });
+      });
+
+      // 소속(종속) 선택자 - inline 방식
+      $(() => {
+        $("h1.tit").css({
+          backgroundColor: "yellow",
+          border: "2px dashed green",
+        });
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>제이쿼리</h1>
+    <h2>선택자 1</h2>
+    <h3 id="tit3">직접 선택자</h3>
+    <h2>선택자 2</h2>
+    <hr />
+    <h1 class="tit">제이쿼리</h1>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      div {
+        background-color: aqua;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      $(() => {
+        console.clear();
+
+        // 선택한 요소노드를, '새로운' 요소노드로 '대체'함
+        $("h2").replaceWith("<h3>replace method</h3>");
+
+        // 선택한 요소노드를, '새로운' 요소노드로 '대체'함
+        // $("<p>Change</p>").replaceAll("div");
+      });
+
+      $(() => {
+        // 선택자가 선택한 요소노드의 부모노드를 삭제
+        $("strong").unwrap(); // 선택된 자식 요소노드는 그대로 유지
+
+        $(".ct1").wrap("<div>"); // 선택된 요소노드'마다' 부모노드 생성
+        $(".ct2").wrapAll("<div>"); // 선택된 요소노드를 한번에 감싸는 부모노드 생성
+        $("li").wrapInner("<h3>"); // 선택된 요소노드'마다', '컨텐츠(텍스트)'를 감싸는 부모노드 생성
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="box1">
+      <h2>제목1</h2>
+      <div>내용1</div>
+      <div>내용2</div>
+    </section>
+    <section class="box2">
+      <h2>제목2</h2>
+      <div>내용3</div>
+      <div>내용4</div>
+    </section>
+    <h1 id="tit_1"><strong>객체 조작 및 생성</strong></h1>
+    <p class="ct1">내용11</p>
+    <p class="ct1">내용22</p>
+    <p class="ct2">내용33</p>
+    <p class="ct2">내용44</p>
+    <ul>
+      <li>내용5</li>
+      <li>내용6</li>
+    </ul>
+  </body>
+</html>

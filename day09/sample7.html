@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      $(() => {
+        console.clear();
+
+        const copyObj = $(".box1").children().clone();
+        console.log(copyObj);
+
+        // JQuery.clone(withDataAndEvents?: boolean, deepWithDataAndEvents?: boolean): JQuery
+        console.log($(".box1").children().clone(true, true));
+
+        // $(".box2").remove(); // 선택한 요소 노드와 그 아래에 있는 모든 하위 요소도 삭제
+        // $(".box3").empty(); // 모든 하위 요소 노드들을 삭제
+        $('.box3').append(copyObj); // 복제한 .box1 요소를 .box3 아래 추가(이벤트 복제 X)
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box1">
+      <p>
+        내용1
+        <span>하위요소</span>
+      </p>
+      <p>내용2</p>
+    </div>
+    <div class="box2">
+      <p>내용3</p>
+      <p>내용4</p>
+    </div>
+    <div class="box3">
+      <p>내용5</p>
+      <p>내용6</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      $(() => {
+        console.clear();
+
+        // 선택한 각 그룹별 요소 노드들 중, 첫 번째 요소 노드를 선택
+        $("li:first-of-type").css("backgroundColor", "lightpink");
+
+        // 선택한 각 그룹별 요소 노드들 중, 마지막 요소 노드를 선택
+        $("li:last-of-type").css("backgroundColor", "lightyellow");
+
+        // :nth-child(n), n = 1, 2, 3, ...
+        $('#menu1 li:nth-child(1)').css('color', 'red');
+        $('#menu1 li:nth-child(2n)').css('color', 'blue');
+
+        // :nth-last-child(n), n은 서수, 뒤에서부터
+        $('#menu2 li:nth-last-child(2)').css('color', 'green');
+
+        // 구조적 가상 클래스 선택자
+        $('li:only-child').css('backgroundColor', 'purple');
+
+        // 후손 선택자(Half-open, exclusive)
+        // JQuery.slice(start: number, end?: number) : JQuery => 인덱스 기준
+        $('#menu2 li').slice(1, 3).css('backgroundColor', 'aqua');
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>탐색 선택자</h1>
+    <ul>
+      <li>내용1</li>
+      <li>내용2</li>
+      <li>내용3</li>
+    </ul>
+    <ul>
+      <li>내용4</li>
+      <li>내용5</li>
+      <li>내용6</li>
+    </ul>
+    <hr />
+    <ul id="menu1">
+      <li>내용1</li>
+      <li>내용2</li>
+      <li>내용3</li>
+      <li>내용4</li>
+    </ul>
+    <ul id="menu2">
+      <li>내용5</li>
+      <li>내용6</li>
+      <li>내용7</li>
+    </ul>
+    <ul id="menu3">
+      <li>내용 8</li>
+    </ul>
+  </body>
+</html>

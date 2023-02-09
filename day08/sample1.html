@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      console.clear();
+      $(() => {
+        // 1. 자식 선택자(>)를 이용
+        $("#wrap1 > h1").css("border", "2px dashed #f00");
+
+        // 2. 자식 선택자(>)를 이용
+        $("#wrap1 > section") // JQuery.children(selector?: string): JQuery
+          .children() // <section> 태그의 모든 자식 요소들
+          .css({
+            backgroundColor: "yellow",
+            border: "2px solid brown",
+          });
+
+        // 자식 선택자(>) + children(특정 자식 지정)
+        $("#wrap1 > section").children("p").css({
+          backgroundColor: "purple",
+          border: "5px dashed pink",
+        });
+      });
+
+      $(() => {
+        const style_1 = {
+          backgroundColor: "blue",
+          border: "2px solid green",
+        };
+
+        const style_2 = {
+          backgroundColor: "brown",
+          border: "3px dashed yellow",
+        };
+
+        // prev(): 선택한 요소의 바로 이전(바로 위 형) 선택
+        $(".txt1").prev().css(style_1);
+        $(".txt1 + p").css(style_2); // CSS3: 일반 형제 선택자
+
+        // next(): 선택한 요소의 다음(바로 동생 요소 노드) 선택
+        $(".txt1").next().next().css(style_2);
+
+        // prevAll(): 선택한 요소 노드 기준으로, 모든 형들을 선택
+        // nextAll(): 선택한 요소 노드 기준으로, 모든 동생들을 선택
+        $('.txt2').prevAll().css(style_1); // 기준 노드 이전
+        $('.txt2').nextAll().css(style_2); // 기준 노드 다음
+
+        // siblings(): 선택한 요소 노드가 포함되어있는, 모든 형제들 선택()
+        // siblings = prevAll + nextAll
+        $('.txt3').siblings().css(style_1); // 기준 노드 제외, 모든 형제들 적용
+
+        // prevUntil(): 
+        // nextUntil(): 
+        $('.txt4').prevUntil('.title').css(style_1); // title은 포함 X
+        $('.txt4').nextUntil('.txt5').css(style_2); // txt5는 포함 X
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="wrap1">
+      <h1>인접 관계 선택자</h1>
+      <p>내용 1</p>
+      <section>
+        <h1>자식 요소 선택자</h1>
+        <p>내용 2</p>
+      </section>
+    </div>
+    <div id="wrap2">
+      <h1>인접 관계 선택자</h1>
+      <p>내용 1</p>
+      <p class="txt1">내용 2</p>
+      <p>내용 3</p>
+      <p>내용 4</p>
+    </div>
+    <div id="wrap3">
+      <h1>인접 관계 선택자</h1>
+      <p>내용 1</p>
+      <p class="txt2">내용 2</p>
+      <p>내용 3</p>
+      <p>내용 4</p>
+    </div>
+    <div id="wrap4">
+      <h1>인접 관계 선택자</h1>
+      <p>내용 1</p>
+      <p class="txt3">내용 2</p>
+      <p>내용 3</p>
+      <p>내용 4</p>
+    </div>
+    <div id="wrap5">
+      <h1 class="title">선택자</h1>
+      <p>내용 1</p>
+      <p>내용 2</p>
+      <p class="txt4">내용 3</p>
+      <p>내용 4</p>
+      <p>내용 5</p>
+      <p class="txt5">내용 6</p>
+    </div>
+  </body>
+</html>

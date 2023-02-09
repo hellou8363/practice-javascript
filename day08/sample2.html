@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      $(() => {
+        console.clear();
+
+        // parents(): 선택한 요소 노드의 모든 직계 존속 노드를 선택
+        $(".txt1").parents().css("border", "2px solid gray"); // <html>까지 전체 적용
+        $(".txt2").parents("div").css("border", "5px dashed blue"); // <div>만 적용
+
+        // closest(selector?): 선택한 요소 노드의 모든 부모 노드 중 지정한 가장 가까운 부모 노드(한 개) 선택
+        $('.txt1').closest('div').css('backgroundColor', 'yellow');
+
+        // 후손 선택자(공백)와 :first / :last 구조적 가상 클래스 선택자 이용
+        $('#menu li:first').css('backgroundColor', 'pink');
+        $('#menu li').first().css('backgroundColor', 'pink');
+
+        $('#menu li:last').css('backgroundColor', 'brown');
+        $('#menu li').last().css('backgroundColor', 'brown');
+        
+        // even: 짝수 요소, odd: 홀수 요소만 선택 스타일 적용(인덱스 기준)
+        $('#menu li:even').css('border', '2px solid red');
+        $('#menu li:odd').css('border', '2px solid blue');
+
+        // eq(n): equl, 지정된 순번의 요소를 선택
+        $('#menu li:eq(2)').css('color', 'red');
+        $('#menu li').eq(2).css('color', 'red');
+
+        // lt(less than 2) 번째 li 선택
+        $('#menu li:lt(2)').css('color', 'blue');
+
+        // gt(greater than 2) 번째 li 선택
+        $('#menu li:gt(2)').css('color', 'green');
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1 class="title">선택자</h1>
+      <section>
+        <div>
+            <p> <!-- p 태그로 p 태그를 감싸면 <p></p>가 위 아래로 생김(DOM tree)-->
+              <p class="txt1">내용 1</p>
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div>
+          <p class="txt2">내용 2</p>
+        </div>
+      </section>
+      <div>
+        <h2>구조적 가상 선택자</h2>
+        <ul id="menu">
+          <li>내용1</li>
+          <li>내용2</li>
+          <li>내용3</li>
+          <li>내용4</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
