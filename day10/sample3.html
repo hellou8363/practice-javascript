@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      // DOM + All resources files downloaded
+      // 리소스의 정보를 조작할 때는 onload를 사용해야 함
+      // $(window).load(function () { // 이미지 사이즈를 구할 수 있음
+      $(document).ready(function () {
+        // 이미지 사이즈를 구할 수 없음
+        console.clear();
+        console.debug("-- onload --");
+
+        const h2 = $(".img1").height();
+        console.log("lond :", h2);
+
+        $(".img1").width(200).height(200);
+      });
+
+      // 실시간 마우스 위치 추적 이벤트
+      $(function () {
+        console.clear();
+
+        $(document).on("mousemove", function (e) {
+          console.debug("-- onmousemove --");
+          console.debug("\t+e: ", e);
+
+          // 뷰포트가 아닌 전체화면을 기준(window 화면 전체)
+          $(".posX").text(e.screenX);
+          $(".posY").text(e.screenY);
+
+          // 뷰포트 좌측상단 끝점기준
+          // $(".posX").text(e.pageX);
+          // $(".posY").text(e.pageY);
+        });
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      <img class="img1" src="https://picsum.photos/id/684/100/100" alt="img1" />
+    </p>
+    <h1>mousemove</h1>
+    <p>X: <span class="posX">0</span>px</p>
+    <p>Y: <span class="posY">0</span>px</p>
+  </body>
+</html>

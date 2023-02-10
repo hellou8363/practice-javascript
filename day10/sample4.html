@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      $(function () {
+        console.clear();
+
+        // on 메소드로 단독이벤트 핸들러 등록
+        $(".btn1").on("click", function (e) {
+          console.debug("-- onclicked on btn1 --");
+
+          // onclick 이벤트의 기존동작을 제거(무력화) #1
+          e.preventDefault(); // 가장 첫 줄에 작성하는 것이 좋음
+
+          $(".txt1").css("backgroundColor", "#ff0");
+
+          // onclick 이벤트의 기본동작을 제거(무력화) #2
+          // return false;
+        });
+
+        $(".link2").on("click", function (e) {
+          e.preventDefault(); // 가장 첫 줄에 작성하는 것이 좋음
+
+          console.debug("-- onclicked on btn2 --");
+
+          $(".txt2").css("backgroundColor", "#0ff");
+        });
+
+        $(".btn3").on("dblclick", function (e) {
+          e.preventDefault(); // 가장 첫 줄에 작성하는 것이 좋음
+
+          console.debug("-- dblclick on btn3 --");
+
+          $(".txt3").css("backgroundColor", "#0f0");
+
+          return false;
+        });
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <p><a href="https://www.naver.com/" class="btn1">NAVER</a></p>
+    <p class="txt1">내용1</p>
+    <p><a href="https://www.daum.net/" class="link2">DAUM</a></p>
+    <p class="txt2">내용2</p>
+    <p><button class="btn3">버튼3</button></p>
+    <p class="txt3">내용3</p>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      $(function () {
+        console.clear();
+
+        // 키보드에서 특정 키를 누른상태에서 발생하는 이벤트로
+        // 아직 손가락을 키에서 떼지 않은 상태
+        $(document).on("keydown", keyEventFnc);
+
+        function keyEventFnc(e) {
+          let direct = "";
+
+          // Event 객체의 필드로, 사용자가 입력한 키코드값을 저장하고 있는 필드가 바로 'keyCode'
+          switch (
+            e.keyCode // ASCII code table에 정의된 10진수 키코드값이 들어있음
+          ) {
+            case 37:
+              direct = "LEFT";
+              break;
+            case 38:
+              direct = "TOP";
+              break;
+            case 39:
+              direct = "RIGHT";
+              break;
+            case 40:
+              direct = "BOTTOM";
+              break;
+          } // switch
+
+          if (direct) {
+            // input 태그에 사용자가 입력한 값을 획득/설정하는 방법
+            $("#user_id").val(direct);
+          } // if
+
+          // 시스템 키가 눌렸는지 체크
+          console.log(e);
+
+          $(".shift").text(e.shiftKey);
+          $(".ctrl").text(e.ctrlKey);
+          $(".alt").text(e.altKey);
+        } // keyEventFnc
+      });
+
+      $(() => {
+        // 위임방식의 이벤트 핸들러 등록
+        // JQuery.delegate(selector: any, eventType: string, handler: (eventObject: JQueryEventObject) => any): JQuery
+        $(".btn_wrap").delegate(".btn_1.on", "mouseover focus", function () {
+          alert("Hello!!");
+        });
+
+        // 동적으로 class 속성값(on) 추가
+        $(".btn_1").addClass("on");
+
+        // 위임방식의 그룹이벤트 핸들러 등록이나 1회성 처리
+        $(document).one("mouseover focus", ".btn_2.on", function () {
+          alert("Welcome!!");
+        });
+
+        // 동적으로 class 속성값(on) 추가
+        $(".btn_2").addClass("on");
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      <input type="text" name="user_id" id="user_id" /><br />
+      1. SHIFT KEY : <span class="shift"></span><br />
+      2. CONTROL KEY : <span class="ctrl"></span><br />
+      3. ALT KEY : <span class="alt"></span><br />
+    </p>
+    <div id="wrap">
+      <p class="btn_wrap">
+        <button class="btn_1">버튼1</button>
+      </p>
+      <p>
+        <button class="btn_2">버튼2</button>
+      </p>
+    </div>
+  </body>
+</html>
