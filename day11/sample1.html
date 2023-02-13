@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      $(() => {
+        let arr;
+
+        function sleep(millis) {
+          let dt = new Date();
+
+          while((new Date() - dt) <= millis);
+        } // sleep
+
+
+        sleep(1000 * 3); 
+
+        console.clear();
+
+        // $.ajax() 제이쿼리 메소드로, 상세하게 비동기호출 수행 후
+        // 비동기로 받아온 데이터를 이용해서, 현재문서의 DOM tree
+
+        $.ajax({ // 객체 리터럴
+          url: "data/members.json", // 데이터 전송 및 요청할 외부 주소
+          // url: "http://eunhye:8080/members.json", // CORS 정책 위반
+          dataType: "json", // 요청한 데이터 형식
+          success: function (data) { // 전송 성공시 실행될 코드
+            console.debug("success(data) invoked.");
+            console.log(typeof data, data.constructor.prototype);
+
+            arr = data; // 전역변수에 수신 데이터(JSON) 저장
+
+            if (data.length > 0) { // 회원정보가 1명이상 있다면
+              let tbl = $("<table>"); // 새로운 <table> 요소노드 생성
+
+              tbl
+                .attr("border", "1")
+                .css({
+                  border: "1px solid black",
+                  borderColor: "collapse",
+                });
+
+                // JSON 배열의 원소를 순회
+                for(let member of data) {
+                  let tr = $("<tr>")
+                    .append(
+                      $("<td>").text(member.id).css('padding-left', '10px'),
+                      $("<td>").text(member.first_name).css('padding-left', '10px'),
+                      $("<td>").text(member.last_name).css('padding-left', '10px'),
+                      $("<td>").text(member.email).css('padding-left', '10px'),
+                      $("<td>").text(member.gender).css('padding-left', '10px'),
+                    ); // .append
+
+                    tbl.append(tr);
+                } // for
+
+                $('.container').append(tbl);
+            } // if
+          }, // success method
+        }); // $.ajax
+      }); // .jq
+    </script>
+  </head>
+  <body>
+    <h1>jquery_ajax</h1>
+    <hr />
+    <div class="container"></div>
+  </body>
+</html>

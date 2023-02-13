@@ -100,6 +100,37 @@ $("이벤트 대상 선택").hover(
 ```
 \
 \
+**마우스 이벤트**
+- clientX
+- clientY
+- pageX
+- pageY
+- screenX
+- screenY
+- layerX
+- layerY
+- button
+
+\
+\
+**키보드 이벤트**
+- keyCode
+- altKey
+- ctrlKey
+- shiftKey
+
+\
+\
+**전체 이벤트**
+- target
+- cancelBubble
+- stopPropagation()
+- preventDefault()
+
+\
+\
+**Ajax 메서드**
+\
 이벤트 핸들러 내 this를 사용하는 경우가 잦으므로 Arrow fuction보다는 function을 사용한다.  
 EDD: 이벤트 주도 개발  
 \

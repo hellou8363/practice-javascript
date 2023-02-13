@@ -89,6 +89,23 @@
 
 \
 \
+2023-02-10 (디렉터리명: day10)
+- 이벤트 메서드(단독 / 그룹)
+- 강제 이벤트 발생
+- 이벤트 제거 메서드
+- click() / dblclick 이벤트 메서드
+- 기본 이벤트 차단
+- 마우스 이벤트(mouseover, mouseout, hover 등)
+- 키보드 이벤트
+- 전체 이벤트
+- Ajax 메서드
+
+\
+\
+2023-02-13 (디렉터리명: day11)
+- $.ajax로 JSON / XML 파일 비동기 호출
+\
+\
 ### 참고자료  
 **cdjns**  
 CDN: Content Delivery Network  

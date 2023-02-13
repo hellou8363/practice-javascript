@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>XHR2</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      window.onload = function() {
+        console.clear();
+        console.group("XHR");
+
+        // XHR을 이용한 비동기식 요청처리
+        // 1. XHR 객체 생성
+        const xhr = new XMLHttpRequest();
+
+        // 2. XMLHttpRequest.onreadystatechange 이벤트 핸들러 설정
+        // (property) XMLHttpRequest.onreadystatechange: (this: XMLHttpRequest, ev: Event) => any
+        xhr.onreadystatechange = function() {
+          console.log('2. onreadystatechange: ', xhr.readyState);
+
+          if(xhr.readyState == 4) { // 응답완료 상태일 때
+
+            // HTTP status code를 검사, 정상응답(200)인 경우만 응답 데이터(xhr.responseText) 사용
+            if(xhr.status == 200) { // HTTP status code
+              document.body.innerHTML = xhr.responseText;
+
+              // JSON.stringify(): JS Object -> JSON string 변환
+              // JSON.parse(): JSON string -> JS Object 변환
+              const arr = JSON.parse(xhr.responseText);
+
+              console.log('3. arr: ', arr);
+
+              if(arr.length > 0) {
+                const person = arr[0];
+
+                console.log('\t1. id: ', person.id);
+                console.log('\t2. first_name: ', person.first_name);
+                console.log('\t3. last_name: ', person.last_name);
+                console.log('\t4. email: ', person.email);
+                console.log('\t5. gender: ', person.gender);
+              } // if(arr.length > 0)
+            } // if(xhr.status == 200)
+          } // if(xhr.readyState == 4)
+        } // onreadystatechange
+
+        // 3. open()
+        xhr.open('GET', '../data/members.json', true);
+
+        // 필요시 아래 메소드를 통해 HTTP Request의 헤더 영역에
+        // 새로운 헤더 추가 또는 기존 헤더의 값 변경
+        // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        // 4. send()
+        xhr.send();
+
+        console.groupEnd();
+      } // onload
+    </script>
+  </head>
+  <body></body>
+</html>

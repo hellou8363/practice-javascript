@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>XHR1</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      // E.target: window
+      // E.type: load
+      // E.listener: onload
+      // E.handler: Anonymous function
+      window.onload = function () {
+        console.clear();
+
+        // XHR(XMLHttpRequest)을 이용한 동기식 요청처리
+        // 1. xhr 객체 생성 => new 연산자 + XHR 생성자 함수(JS 내장 객체)
+        const xhr = new XMLHttpRequest();
+
+        console.log("1. xhr: ", xhr);
+
+        // XHR 객체는 생명주기를 가지고 있고, 주기별 상태값(readyState)이 변함(***)
+        console.log("\t+ readyState: ", xhr.readyState);
+
+        /* 2. XMLHttpRequest.open (
+              method: string,    // HTTP method: GET, POST
+              url: string,       // action URL
+              async: boolean,    // 동기식/비동기식을 결정
+              username?: string, // HTTP basic 인증을 위한 아이디
+              password?: string  //                        암호
+      ): void
+      */
+
+        // 동기식 GET방식 요청을 보내는 URL주소 지정
+        // xhr.open('GET', "URL주소", true)
+        // xhr.open('POST', "URL주소", false)
+        xhr.open("GET", "../data/members.json", false); // 동기식 요청을 보냄
+
+        // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        console.log("2. xhr: ", xhr);
+        console.log("\t+ readyState: ", xhr.readyState);
+
+        /* 3. XMLHttpRequest.send(
+        body?: Document | XMLHttpRequestBodyInit
+        ): void
+        예) xhr.send('name=eunhye&age=100');
+      */
+        xhr.send(); // POST 방식으로 보낼 때 사용
+
+        console.log("3. xhr: ", xhr);
+        console.log("\t+ readyState: ", xhr.readyState);
+
+        // 4. XHR로 보낸 요청과 그 응답 데이터를 이용, 현재 문서의 <body> 태그의 컨텐츠로 지정
+        document.body.innerHTML = xhr.responseText; // 응답데이터
+        console.log("4. xhr: ", xhr);
+        console.log("\t+ readyState: ", xhr.readyState);
+      }; // onload
+    </script>
+  </head>
+  <body></body>
+</html>

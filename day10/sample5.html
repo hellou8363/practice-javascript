@@ -49,6 +49,8 @@
         } // keyEventFnc
       });
 
+      // 라이브 이벤트: 현재 등록한 이벤트(들)이 발생할 조건이 안되지만
+      // 미래시점에 이벤트(들) 발생조건을 만족시키면 그때 처리될 수 있는 이벤트(들) 의미
       $(() => {
         // 위임방식의 이벤트 핸들러 등록
         // JQuery.delegate(selector: any, eventType: string, handler: (eventObject: JQueryEventObject) => any): JQuery
@@ -57,7 +59,7 @@
         });
 
         // 동적으로 class 속성값(on) 추가
-        $(".btn_1").addClass("on");
+        // $(".btn_1").addClass("on");
 
         // 위임방식의 그룹이벤트 핸들러 등록이나 1회성 처리
         $(document).one("mouseover focus", ".btn_2.on", function () {
@@ -65,7 +67,7 @@
         });
 
         // 동적으로 class 속성값(on) 추가
-        $(".btn_2").addClass("on");
+        // $(".btn_2").addClass("on");
       });
     </script>
     <title>Document</title>

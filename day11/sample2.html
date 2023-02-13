@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ajax</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      var xmlDOM;
+
+      $(() => {
+        console.clear();
+
+        // 비동기 호출
+        $.ajax({
+          url: "data/members2.xml",
+          // url: "data/members2.xml", // 404(Not found)
+          dataType: "xml",
+          success: function (xml) {
+            console.debug("success invoked.");
+
+            // DOM tree => #document => document
+            console.log("xml: ", xml);
+
+            xmlDOM = xml;
+
+            // 문서객체모델(DOM tree) 조작
+            const members = $(xml).find("Member"); // member라는 이름의 태그 조회(대소문자 구분) => 배열로 반환
+            console.log("members", members);
+
+            if (members.length > 0) {
+              // 바인딩 수행
+              const tbl = $("<table>");
+
+              // jquery의 배열순회 메서드: $.each();
+              $.each(members, function (i, e) {
+                const id = $(e).find("id").text();
+                const firstName = $(e).find("first_name").text();
+                const lastName = $(e).find("last_name").text();
+                const email = $(e).find("email").text();
+                const gender = $(e).find("gender").text();
+
+                const tr = $("<tr>").append(
+                  $("<td>").text(id),
+                  $("<td>").text(firstName),
+                  $("<td>").text(lastName),
+                  $("<td>").text(email),
+                  $("<td>").text(gender)
+                ); // .append
+
+                tbl.append(tr);
+              }); // $.each
+
+              $(".wrap").append(tbl);
+            } // if
+          }, // success
+          error: function (jqXHR, textStatus, errorThrown) {
+            console.debug("error invoked.");
+            console.log(
+              `textStatus: ${textStatus}, errorThrown: ${errorThrown}`
+            );
+
+            xhr = jqXHR;
+
+            console.log(xhr);
+            console.log(typeof xhr);
+
+            // ** 아래 4가지 중요 **
+            console.log(xhr.readyState);
+            console.log(xhr.responseText);
+            console.log(xhr.status);
+            console.log(xhr.statusText);
+          }, // error
+        }); // $.ajax
+      }); // .jq
+    </script>
+  </head>
+  <body>
+    <div class="wrap"></div>
+  </body>
+</html>

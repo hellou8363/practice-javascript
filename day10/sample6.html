@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
-  <title>Document</title>
-</head>
-<body>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+    <script>
+      $(() => {
+        console.clear();
+
+        // $.ajax() 제이쿼리 메소드로, 상세하게 비동기호출 수행 후
+        // 비동기로 받아온 데이터를 이용해서, 현재문서의 DOM tree
+
+        $.ajax({
+          url: "data/members.json",
+          dataType: "json",
+          success: function (data) {
+            console.debug("success(data) invoked.");
+            console.log(data);
+
+            arr = data; // 전역변수에 수신 데이터(JSON) 저장
+
+            if (data.length > 0) { // 회원정보가 1명이상 있다면
+              let tbl = $("<table>");
+            }
+          },
+        });
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>jquery_ajax</h1>
+    <hr />
+    <div class="container"></div>
+  </body>
 </html>
